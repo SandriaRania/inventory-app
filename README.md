@@ -1,2 +1,2 @@
-# inventory-app
+# inventory_app
 tes
