@@ -1,3 +1,5 @@
+Tautan Adaptable.io: https://inventory-sandria-rania.adaptable.app/ \
+
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 
 Checklist Tugas
