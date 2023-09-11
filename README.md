@@ -32,7 +32,7 @@ description sebagai deskripsi item dengan tipe TextField.
     
 ```mermaid
 graph TD;
-    A-->B;
+    Request Client-request->urls.py;
     A-->C;
     B-->D;
     C-->D;
