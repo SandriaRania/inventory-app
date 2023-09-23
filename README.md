@@ -1,20 +1,47 @@
 Tugas 3:
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?\
-Jawaban: form POST digunakan untuk menerima seluruh request yang dapat mengubah server, sedangkan form GET mengubah data yang diterimanya dalam bentuk URL. Perbedaan utamanya adalah form POST digunakan untuk data yang bisa diproses dan dimodifikasi nantinya, sedangkan form GET hanya digunakan untuk mengambil data yang tidak mempengaruhi server.
+Jawaban: form POST digunakan untuk menerima seluruh request yang dapat mengubah server, sedangkan form GET mengubah data yang diterimanya dalam bentuk URL. Perbedaan utamanya adalah form POST digunakan untuk data yang bisa diproses dan dimodifikasi nantinya, sedangkan form GET hanya digunakan untuk mengambil data yang tidak mempengaruhi server.\
 Sumber: 
 https://www.baeldung.com/cs/http-get-vs-post#:~:text=GET%20requests%20are%20intended%20to,may%20modify%20the%20server's%20state. 
 
 2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data? \
-Jawaban: Secara umum, HTML digunakan untuk mengatur bagaimana suatu data ditampilkan, sedangkan XML dan JSON digunakan untuk menyimpan atau mengirim data. Perbedaan antara XML dan JSON sendiri adalah formatnya, di mana JSON menggunakan {}(curly brackets) dan lebih mudah dibaca, sedangkan XML menggunakan start dan end tag seperti HTML, namun lebih aman daripada JSON.
+Jawaban: Secara umum, HTML digunakan untuk mengatur bagaimana suatu data ditampilkan, sedangkan XML dan JSON digunakan untuk menyimpan atau mengirim data. Perbedaan antara XML dan JSON sendiri adalah formatnya, di mana JSON menggunakan {}(curly brackets) dan lebih mudah dibaca, sedangkan XML menggunakan start dan end tag seperti HTML, namun lebih aman daripada JSON.\
 Sumber: \
 https://stackoverflow.com/questions/55893598/are-xml-and-json-used-to-communicate-information-between-a-client-and-a-server \
 https://www.deltaxml.com/blog/xml/whats-the-relationship-between-xml-json-html-and-the-internet/#:~:text=The%20differences%20between%20XML%2C%20JSON,how%20that%20data%20is%20displayed. \
 
 3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
-Jawaban: Karena JSON ukurannya lebih kecil, sehingga lebih cepat saat dikirim. Selain itu, format JSON lebih mudah dibaca dibandingkan XML dan kompatibel dengan native data type, JavaScript, serta web technology lainnya.
+Jawaban: Karena JSON ukurannya lebih kecil, sehingga lebih cepat saat dikirim. Selain itu, format JSON lebih mudah dibaca dibandingkan XML dan kompatibel dengan native data type, JavaScript, serta web technology lainnya.\
 Sumber: https://www.linkedin.com/advice/0/what-advantages-disadvantages-using-json-vs-xml#:~:text=JSON%20is%20often%20the%20preferred,and%20efficiency%20of%20data%20processing.
-   
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). \
+
+Checklist Tugas
+
+-Membuat input form untuk menambahkan objek model pada app sebelumnya. \
+Jawaban: Pertama saya membuat file "forms.py" di folder main lalu mengisi class ItemForm sebagai kerangka Form. Lalu saya ke file "views.py" dan membuat function create_item untuk menerima request data dari user. Setelah itu, saya mengubah function show_main yang sudah ada sebelumnya untuk menerima data seluruh object Item yang telah diterima, dan tidak lupa untuk menambah import Item dan ItemForm dari file forms dan models di main. Selanjutnya saya ke "urls.py" untuk membuat path url untuk function create_item. Lalu saya membuat file create_item.html di main/templates untuk menambahkan Item ke database. Terakhir saya melengkapi main.html untuk menampilkan Item yang sudah ditambah oleh user. 
+
+-Tambahkan 5 fungsi views untuk melihat objek yang sudah ditambahkan dalam format HTML, XML, JSON, XML by ID, dan JSON by ID. \
+Jawaban: Untuk format HTML sudah tertera dalam step sebelumnya, sedangkan keempat fungsi sisanya sangat mirip satu sama lain. Sebagai contoh, untuk menampilkan dalam format xml, pertama dibutuhkan fungsi show_xml untuk menyimpan query pada Item laludikembalikan dalam bentuk httpresponse. Lalu, dalam file "urls.py" juga diberi path xml/ agar bisa mengakses data tersebut dalam format xml. Itu adalah contoh untuk format xml, dan format json sama persis dengan cara tersebut, hanya dengan nama yang berbeda. Untuk kedua format lainnya cukup mirip, namun untuk function show_xml atau json_by_id nya, ia menerima parameter id sehingga hanya khusus data satu id tersebut yang ditampilkan kepada user. 
+
+-Membuat routing URL untuk masing-masing views yang telah ditambahkan pada poin 2. \
+
+Jawaban: Untuk setiap format, di barisan paling atas dari file "urls.py", file mengimport setiap fungsi yang mengambil kelima format itu yaitu show_main, create_product, show_xml, show_json, show_xml_by_id, dan show_json_by_id. Selain itu, dalam urlspattern saya juga menambah path url untuk setiap format tersebut agar bisa diakses oleh user.
+
+5. Mengakses kelima URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md. \
+![Screenshot (58)](https://github.com/SandriaRania/inventory_app/assets/124698589/f0d390f0-3020-46e2-8bfa-48f9009dc8b6)
+
+![Screenshot (59)](https://github.com/SandriaRania/inventory_app/assets/124698589/577fea21-8173-4648-9a14-a5c8e4e3fafa)
+
+![Screenshot (60)](https://github.com/SandriaRania/inventory_app/assets/124698589/d97e5bec-8a8f-4152-aa52-357016152af7)
+
+![Screenshot (61)](https://github.com/SandriaRania/inventory_app/assets/124698589/5da677b1-8dbf-48fb-a53c-ae79148b630b)
+
+![Screenshot (62)](https://github.com/SandriaRania/inventory_app/assets/124698589/05cb306b-ba46-49c3-bbcf-0cd1e21151d4)
+
+
+
 Tugas 2:
 Tautan Adaptable.io: https://inventory-sandria-rania.adaptable.app/ 
 
