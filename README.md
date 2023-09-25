@@ -1,3 +1,35 @@
+Tugas 4:
+
+1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?\
+Jawaban: UserCreationForm dalam Django digunakan untuk membuat akun baru dalam web development Django. Ketika ada function ini, maka user bisa membuat akun dengan mendaftarkan nama akun mereka, password akun, lalu konfirmasi password. Beberapa kelebihannya adalah menerima karakter ASCII dan Unicode, bisa diasosiasikan dengan email (namun tidak wajib), dan lain-lain. Contoh kekurangannya adalah nama user tidak case-insensitive, dan akun tanpa password tidak bisa di reset passwordnya. \
+Sumber: https://simpleisbetterthancomplex.com/article/2021/07/08/what-you-should-know-about-the-django-user-model.html
+
+3. Apa perbedaan antara autentikasi dan otorisasi dalam konteks Django, dan mengapa keduanya penting?\
+Jawaban: Autentikasi adalah proses yang memverifikasi akun user, sedangkan otorisasi adalah proses yang menentukan apa saja yang user itu boleh lakukan. Dalam Django, autentikasi mencakup kedua proses tersebut. Autentikasi dan otorisasi adalah proses-proses yang penting agar server bisa menjaga keamanan website dari user yang tidak diautentikasi, serta membatasi hal-hal penting yang mempengaruhi server dari user-user biasa.\
+Sumber: https://docs.djangoproject.com/en/4.2/topics/auth/#:~:text=Overview,to%20refer%20to%20both%20tasks. \
+https://tomorrowsoffice.com/identity-and-access-management/#:~:text=Authentication%20is%20important%20because%20it,network%2Dbased%20applications%20or%20services.
+
+5. Apa itu cookies dalam konteks aplikasi web, dan bagaimana Django menggunakan cookies untuk mengelola data sesi pengguna?\
+Jawaban: Cookies adalah file kecil berbentuk teks yang berisi dengan data dan informasi user yang disimpan dalam browser. Cookies berfungsi untuk meningkatkan personalisasi akun user dengan menyimpan data relevan user dan menampilkannya lagi ketika user mengakses browser yang sama. Dalam Django, kita bisa menambah cookies dengan mengimplementasikan function set_cookie('cookie_name', 'cookie-value') dan get('cookie_name'), kita juga bisa memberi waktu berakhirnya cookies tersebut dengan function set_cookie(key, value='', max_age=None, expires=None) selama None diubah dengan waktu yang diinginkan.
+Sumber: https://appmaster.io/blog/role-of-cookies-in-web-development \
+https://www.programink.com/django-tutorial/django-cookies.html#:~:text=A%20cookie%20is%20a%20small,gets%20added%20to%20the%20request. \
+
+6. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai?\
+Jawaban: Secara umum, cookies seharusnya aman dalam pengembangan web, namun terkadang masih ada risiko keamanan jika menggunakan cookies. Sebagai contoh, jika ada informasi yang sensitif dalam akun user, maka seorang hacker bisa mencuri data tersebut dan menyalahgunakannya untuk hal lain. Contoh lain dapat terjadi sebaliknya, di mana seorang hacker dapat menyusupkan virus dan malware ke komputer kita dengan cara menyamarkannya dalam bentuk cookies. Namun, hal-hal tersebut harusnya tidak terjadi selama keamanan website masih tinggi dan tidak ada celah-celah yang bisa dieksploitasi.
+Sumber: https://appmaster.io/blog/role-of-cookies-in-web-development \
+https://www.kaspersky.com/resource-center/definitions/cookies \
+
+7. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).\
+Jawaban:
+
+Untuk mengimplementasikan fungsi registrasi, login, dan logout user, maka pertama saya megimport UserCreationForm redirect, dan messages di views.py, menambah fungsi register, dan membuat register.html di main/templates berisi format html register tersebut. Setelah itu untuk login dan logout, kita mengimport authenticate, login, dan logout serta menambah fungsi masing-masing di views.py, serta membuat login.html sebagai tempat user membuat akun dan menambah tombol logout dalam main.html. Setelah itu semua, tidak lupa kita menambah path masing-masing fungsi dalam urls.py. 
+
+Untuk membuat akun pengguna dan menambah dummy datanya, sebelumnya kita perlu membuat sebuah akun di website kita dengan cara register, lalu ketika sudah login kita bisa menambah barang-barang yang diinginkan serta nama, jumlah, dan deskripsi masing-masing dengan tombol add new item. 
+
+Untuk menghubungkan model Item dengan User, dalam models.py kita perlu mengimport User serta menambah object user dalam class Item, lalu dalam views.py kita juga perlu menambah fungsi create_product yang akan menambah barang-barang baru kepada akun user yang sedang login. 
+
+Untuk menampilkan detail informasi pengguna yang sedang logged in seperti username dan menerapkan cookies seperti last login pada halaman utama aplikasi, pertama kita perlu mengimport datetime dalam views.py, lalu menambah request cookie datetime now untuk fungsi login_user, dan dalam show_main kita menambah objek last_login untuk mengakses cookie tersebut dan menampilkan last login dalam website kita. Untuk menampilkan username kita, ketika sedang mengimplementasi objek User, kita bisa membuka views.py dan mengubah objek name menjadi 'name': request.user.username agar data yang ditampilkan adalah username akun yang sedang login.
+
 Tugas 3:
 
 1. Apa perbedaan antara form POST dan form GET dalam Django?\
