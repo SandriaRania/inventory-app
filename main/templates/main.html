@@ -1,14 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Inventory List Page</h1>
 
-    <h5>Name:</h5>
-    <p>{{name}}</p>
+<style>
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    
+    border: 1px solid gold; /* Border around the table */
+}
 
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-    <table>
+th, td {
+    border: 1px solid gold; /* Border around table cells (headers and data cells) */
+    padding: 8px;
+    text-align: center;
+}
+</style>
+<div class="full-screen-box">
+    <h3 style="text-shadow: 0 0 10px gold;">Star Age Storage's Page</h3>
+        <p style="font-size: 20px;">Welcome, {{name}} of class {{class}}</p>
+
+    <table style="margin:10px">
         <tr>
             <th>Name</th>
             <th>Amount</th>
@@ -17,19 +29,30 @@
         </tr>
     
         {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
-    
+        
         {% for itemnya in items %}
             <tr>
                 <td>{{itemnya.name}}</td>
                 <td>{{itemnya.amount}}</td>
                 <td>{{itemnya.description}}</td>
                 <td>{{itemnya.date_added}}</td>
+                <td>
+                    <a href="{% url 'main:edit_itemnya' itemnya.pk %}">
+                        <button>
+                            Edit
+                        </button>
+                    </a>
+                    <a href="{% url 'main:delete_itemnya' itemnya.pk %}">
+                        <button>
+                            Delete
+                        </button>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </table>
-    
+
     <br />
-    
     <a href="{% url 'main:create_item' %}">
         <button>
             Add New Item
@@ -41,7 +64,7 @@
             Logout
         </button>
     </a>
-    
     <h5>Sesi terakhir login: {{ last_login }}</h5>
-    
+</div>
+</div>
 {% endblock content %}
