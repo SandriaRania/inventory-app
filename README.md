@@ -2,18 +2,18 @@ Tugas 5:
 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya. \
 Jawaban:
 Element selector: digunakan ketika ingin mencakup seluruh elemen yang sama (h1, p, table, dll) \
-ID selector: digunakan ketika ingin mencakup satu elemen saja, karena id bersifat unik (<div id="">) \
+ID selector: digunakan ketika ingin mencakup satu elemen saja, karena id bersifat unik (<div "id"="") \
 Class selector: digunakan untuk mencakup seluruh elemen yang diberi class yang sama (<div class="") \
 Universal selector: mencakup seluruh elemen HTML (*) \
 Sumber: https://www.w3schools.com/css/css_selectors.asp 
 
 2. Jelaskan HTML5 Tag yang kamu ketahui. \
 Jawaban: 
-<p> mendefinisikan suatu paragraf \
-<h1>...<h6> mendefinisikan header pertama hingga keenam \
-<link> mendefinisikan suatu url link \
-<table> mendefinisikan suatu tabel \
-<div> mendefinisikan suatu divisi atau kelompok tertentu \
+"<p>" mendefinisikan suatu paragraf \
+"<h1>...<h6>" mendefinisikan header pertama hingga keenam \
+"<link>" mendefinisikan suatu url link \
+"<table>" mendefinisikan suatu tabel \
+"<div>" mendefinisikan suatu divisi atau kelompok tertentu \
 Sumber: https://www.w3schools.com/TAGS/default.asp
     
 3. Jelaskan perbedaan antara margin dan padding. \
