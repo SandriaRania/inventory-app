@@ -9,11 +9,11 @@ Sumber: https://www.w3schools.com/css/css_selectors.asp
 
 2. Jelaskan HTML5 Tag yang kamu ketahui. \
 Jawaban: 
-"<p>" mendefinisikan suatu paragraf \
-"<h1>...<h6>" mendefinisikan header pertama hingga keenam \
-"<link>" mendefinisikan suatu url link \
-"<table>" mendefinisikan suatu tabel \
-"<div>" mendefinisikan suatu divisi atau kelompok tertentu \
+<"p"> mendefinisikan suatu paragraf \
+<"h1">...<"h6"> mendefinisikan header pertama hingga keenam \
+<"link"> mendefinisikan suatu url link \
+<"table"> mendefinisikan suatu tabel \
+<"div"> mendefinisikan suatu divisi atau kelompok tertentu \
 Sumber: https://www.w3schools.com/TAGS/default.asp
     
 3. Jelaskan perbedaan antara margin dan padding. \
