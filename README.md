@@ -1,3 +1,38 @@
+Tugas 5:
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya. \
+Jawaban:
+Element selector: digunakan ketika ingin mencakup seluruh elemen yang sama (h1, p, table, dll) \
+ID selector: digunakan ketika ingin mencakup satu elemen saja, karena id bersifat unik (<div id="">) \
+Class selector: digunakan untuk mencakup seluruh elemen yang diberi class yang sama (<div class="") \
+Universal selector: mencakup seluruh elemen HTML (*) \
+Sumber: https://www.w3schools.com/css/css_selectors.asp 
+
+2. Jelaskan HTML5 Tag yang kamu ketahui. \
+Jawaban: 
+<p> mendefinisikan suatu paragraf \
+<h1>...<h6> mendefinisikan header pertama hingga keenam \
+<link> mendefinisikan suatu url link \
+<table> mendefinisikan suatu tabel \
+<div> mendefinisikan suatu divisi atau kelompok tertentu \
+Sumber: https://www.w3schools.com/TAGS/default.asp
+    
+3. Jelaskan perbedaan antara margin dan padding. \
+Jawaban:
+Padding adalah ruang kosong antara konten dan border, sedangkan margin adalah ruang kosong antara border dan area di luar elemen tersebut. Margin bersifat transparan dan perubahan elemen tidak mempengaruhi margin, namun perubahan pada elemen biasanya mempengaruhi padding juga. Selain itu, margin bisa disetel auto margin, namun padding tidak. \
+Sumber: https://www.geeksforgeeks.org/css-padding-vs-margin/ 
+
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. \
+Jawaban: Framework Tailwind mengutamakan fleksibilitas dan utilitas agar penggunanya dapat merancang desain kreatif mereka sendiri, sedangkan Bootstrap mengutamakan konsistensi dan efisiensi dengan menyediakan komponen yang sudah siap pakai. Selain itu, Tailwind memerlukan ukuran file yang kecil berisi dengan utilitas tertentu saja, sedangkan Bootstrap memerlukan ukuran file yang lebih besar. \
+Sumber: https://www.tutorialspoint.com/tailwind-css-vs-bootstrap
+
+5. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya? \
+Jawaban: Umumnya Tailwind digunakan ketika pengguna ingin membuat desain mereka sendiri, sedangkan Bootstrap digunakan ketika pengguna ingin membuat desain yang sudah ada. \
+Sumber: https://www.tutorialspoint.com/tailwind-css-vs-bootstrap
+
+6. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). \
+Jawaban: Untuk mengkustomisasi halaman login, register, dan tambah inventori, saya membuat sebuah class .full-screen-box di base.html yang mencakup seluruh file html di main/templates yang extend dari file base.html tersebut. Class ini memberikan background yang sama dan menempatkan seluruh elemen di tengah-tengah layar untuk seluruh file. Selanjutnya saya juga menambahkan selector body yang merubah warna teks menjadi warna yang diinginkan. \
+Untuk mengkustomisasi halaman daftar inventori, saya memberi border pada tabel daftar item dan sedikit mengubah teks akun dan kelas. Selain itu, saya juga menambah tombol edit dan delete item dengan cara menambah fungsi edit_itemnya dan delete_itemnya di file views.py dan menambah url link yang sesuai di urls.py. Untuk edit_itemnya karena memerlukan tampilan tambahan, maka dibuat file baru yaitu file edit_itemnya.html di folders main/templates.
+
 Tugas 4:
 
 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?\
