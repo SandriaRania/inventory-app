@@ -18,40 +18,42 @@ th, td {
 </style>
 <div class="full-screen-box">
     <h3 style="text-shadow: 0 0 10px gold;">Star Age Storage's Page</h3>
-        <p style="font-size: 20px;">Welcome, {{name}} of class {{class}}</p>
+    <p style="font-size: 20px;">Welcome, {{name}} of class {{class}}</p>
 
-    <table style="margin:10px">
-        <tr>
-            <th>Name</th>
-            <th>Amount</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>
-    
-        {% comment %} Berikut cara memperlihatkan data item di bawah baris ini {% endcomment %}
-        
-        {% for itemnya in items %}
-            <tr>
-                <td>{{itemnya.name}}</td>
-                <td>{{itemnya.amount}}</td>
-                <td>{{itemnya.description}}</td>
-                <td>{{itemnya.date_added}}</td>
-                <td>
-                    <a href="{% url 'main:edit_itemnya' itemnya.pk %}">
-                        <button>
-                            Edit
-                        </button>
-                    </a>
-                    <a href="{% url 'main:delete_itemnya' itemnya.pk %}">
-                        <button>
-                            Delete
-                        </button>
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
+    <table id="item_table">
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel"   style="color: black; text-shadow: none;">Add New Item</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" onsubmit="return false;">
+                            {% csrf_token %}
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label"   style="color: black; text-shadow: none;">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="amount" class="col-form-label"   style="color: black; text-shadow: none;">Amount:</label>
+                                <input type="number" class="form-control" id="amount" name="amount"></input>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="col-form-label"   style="color: black; text-shadow: none;">Description:</label>
+                                <textarea class="form-control" id="description" name="description"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Item</button>
+                    </div>
+                </div>
+            </div>    
     </table>
-
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Item by AJAX</button>
+    
     <br />
     <a href="{% url 'main:create_item' %}">
         <button>
@@ -67,4 +69,42 @@ th, td {
     <h5>Sesi terakhir login: {{ last_login }}</h5>
 </div>
 </div>
+
+<script>
+    async function getItems() {
+        return fetch("{% url 'main:get_items_json' %}").then((res) => res.json())
+    }
+    async function refreshItems() {
+        document.getElementById("item_table").innerHTML = ""
+        const items = await getItems()
+        let htmlString = `<tr>
+            <th>Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Date Added</th>
+        </tr>`
+        items.forEach((itemnya) => {
+            htmlString += `\n<tr>
+            <td>${itemnya.fields.name}</td>
+            <td>${itemnya.fields.amount}</td>
+            <td>${itemnya.fields.description}</td>
+            <td>${itemnya.fields.date_added}</td>
+        </tr>` 
+        })
+        
+        document.getElementById("item_table").innerHTML = htmlString
+    }
+
+    refreshItems()
+    function addItem() {
+        fetch("{% url 'main:add_item_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshItems)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addItem
+</script>
 {% endblock content %}

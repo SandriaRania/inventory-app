@@ -11,6 +11,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+import datetime
 
 @login_required(login_url='/login')
 
@@ -106,3 +108,22 @@ def delete_itemnya(request, id):
     items = Item.objects.get(pk = id)
     items.delete()
     return HttpResponseRedirect(reverse('main:show_main'))
+
+def get_items_json(request):
+    item_products = Item.objects.all()
+    return HttpResponse(serializers.serialize('json', item_products))
+
+@csrf_exempt
+def add_item_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        amount = request.POST.get("amount")
+        description = request.POST.get("description")
+        user = request.user
+
+        new_product = Item(name=name, amount=amount, description=description, user=user)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
