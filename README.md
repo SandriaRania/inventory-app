@@ -1,3 +1,48 @@
+Tugas 6:
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming. \
+Jawaban: Asynchronous programming adalah ketika suatu program dapat melakukan beberapa tasks sekaligus secara paralel, sedangkan synchronous programming melakukan tasknya satu per satu saja. Kelebihan asynchronous programming adalah ia lebih cepat, namun memerlukan tingkat keahlian yang tinggi untuk mengimplementasikannya, sedangkan synchronous programming lebih lambat, namun lebih simpel dan mudah untuk digunakan dan dikembangkan. \
+Sumber: https://distantjob.com/blog/synchronous-vs-asynchronous-programming/
+
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini. \
+Jawaban: paradigma event-driven programming adalah ketika suatu program bergantung pada events yang terjadi. Suatu program tidak akan berjalan terus menerus, melainkan menunggu hingga ada event tertentu, baru ia menjalankan program sesuai yang diperintahkan. Dalam tugas ini, contohnya adalah dalam kalimat ini document.getElementById("button_add").onclick = addItem, dalam command event-driven ini, fungsi addItem akan dijalankan ketika button dengan id +button_add" ditekan. \
+Sumber: https://reintech.io/blog/what-is-event-driven-programming-in-javascript
+
+3. Jelaskan penerapan asynchronous programming pada AJAX. \
+Jawaban: AJAX menerapkan asynchronous programming dengan mengirim data ke penengah di server, lalu dikirim kembali sehingga kita tidak perlu reload website untuk memperbarui data. Salah satu cara mengirim data adalah menggunakan XMLHttpRequest, tapi kita juga bisa menggunakan fetch() dengan Fetch API. \
+Sumber: https://pbp-fasilkom-ui.github.io/ganjil-2024/docs/tutorial-5
+
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan. \
+Jawaban: Fetch API menggunakan JSON atau teks, sedangkan jQuery menggunakan XML. Keduanya menggunakan AJAX, namun syntax dari jQuery lebih memusingkan daripada Fetch API, dan Fetch lebih mudah dan cepat daripada jQuery karena berbasis Promise, tidak seperti jQuery yang berbasis callback. Secara kesimpulan, Fetch memiliki lebih banyak kelebihan daripada jQuery. \
+Jawaban: https://medium.com/javascript-indonesia-community/berbagai-teknik-dan-cara-melakukan-fetch-api-menggunakan-javascript-yang-harus-kamu-ketahui-5a94f361643a
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial). \
+Jawaban:
+Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX. \
+Untuk membuat sebuah tabel dengan AJAX, saya menghapus seluruh tabel yang saya buat sebelumnya di main.html dan mengubahnya menjadi tabel berbasis bootstrap, lalu beberapa objek diberi id agar bisa menggunakan getELementbyId di dalam script, yang diletakkan di paling bawah file. Saya tidak menggunakan approach cards di Tugas 5.
+
+AJAX GET: Ubahlah kode cards data item agar dapat mendukung AJAX GET dan lakukan pengambilan task menggunakan AJAX GET. \
+Dalam skrip di main.html, saya membuat fungsi getItems() yang fetch fungsi get_items_json di views.py, dan fungsi ini akan menerima semua input yaitu name, amount, dan description, lalu ditempatkan lagi di item_table di main.html. Saya juga menambahkan link ke get_items_json tersebut di urls.py. 
+
+AJAX POST: 
+
+Buatlah sebuah tombol yang membuka sebuah modal dengan form untuk menambahkan item. \
+Untuk ini saya membuat button Add Item by Ajax di bawah tabel item_table yang akan menutup elemen di belakangnya dan membuka form dengan data-bs-toggle="modal" data-bs-target="#exampleModal". 
+
+Buatlah fungsi view baru untuk menambahkan item baru ke dalam basis data. \
+Fungsi yang saya buat adalah add_item_ajax() di views.py yang menerima semua input name, amount, dan description lalu direturn ke refreshItems() di skrip main.html. 
+
+Buatlah path /create-ajax/ yang mengarah ke fungsi view yang baru kamu buat. \
+Saya menambah path /create-item-ajax/ di urls.py yang memanggil fungsi add_item_ajax() dari views.py 
+
+Hubungkan form yang telah kamu buat di dalam modal kamu ke path /create-ajax/. \
+Dalam skrip main.html di fungsi refreshItems saya menggunakan fetch untuk memanggil fungsi add_item_ajax() dari main.html. 
+
+Lakukan refresh pada halaman utama secara asinkronus untuk menampilkan daftar item terbaru tanpa reload halaman utama secara keseluruhan. \
+Dalam fungsi refreshItems saya menggunakan POST untuk langsung memperbarui data di form tanpa harus mereload data. 
+
+Melakukan perintah collectstatic, perintah ini bertujuan untuk mengumpulkan file static dari setiap aplikasi kamu ke dalam suatu folder yang dapat dengan mudah disajikan pada produksi. \
+Untuk ini, saya membuat STATIC_ROOT di settings.py yang mengarah ke folder 'static', lalu saya buat folder baru bernama 'static' di direktori utama inventory_list, lalu di Command Prompt saya menjalankan python manage.py collectstatic yang mengambil semua data static dari program lalu disimpan di folder tersebut. 
+
 Tugas 5:
 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya. \
 Jawaban:
